@@ -1,15 +1,42 @@
 import React from "react";
+import { motion } from "motion/react";
+import team1 from '../../assets/team1.jpg'
+import team2 from '../../assets/team2.jpg'
 
 const Banner = () => {
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-          className="max-w-sm rounded-lg shadow-2xl"
-        />
-        <div>
-          <h1 className="text-5xl font-bold">Box Office News!</h1>
+        <div className="flex-1">
+          <motion.img
+            animate={{y:[100,150,100]}}
+            transition={{duration:5,repeat:Infinity}}
+            src={team1}
+            className="max-w-sm rounded-t-[40px] rounded-br-[40px] border-b-8 border-blue-500 border-s-8 shadow-2xl"
+          />
+          <motion.img
+            animate={{x:[100,150,100]}}
+            transition={{duration:10, delay:5, repeat:Infinity}}
+            src={team2}
+            className="max-w-sm rounded-t-[40px] rounded-br-[40px] border-b-8 border-blue-500 border-s-8 shadow-2xl"
+          />
+        </div>
+        <div className="flex-1">
+          <motion.h1
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 4 }}
+            className="text-5xl font-bold"
+          >
+            Remote{" "}
+            <motion.span
+              animate={{ color: ["#ff5733", "#9fff33", "#3342ff", "#1c6172"] }}
+              transition={{ duration: 4, repeat: Infinity }}
+            >
+              Jobs
+            </motion.span>{" "}
+            For You!
+          </motion.h1>
           <p className="py-6">
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
