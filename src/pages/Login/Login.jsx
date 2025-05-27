@@ -3,9 +3,13 @@ import React, { use } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import loginLottie from "../../../public/lottie/login.json"
 import SocialLogin from "../Shared/SocialLogin";
+import { useLocation, useNavigate } from "react-router";
 
 const Login = () => {
   const {CreateSignIn}=use(AuthContext)
+  const location =useLocation()
+  const navigate =useNavigate()
+  const formLocation =location.state || '/'
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -14,6 +18,7 @@ const Login = () => {
     CreateSignIn(email, password)
       .then((result) => {
         console.log(result.user);
+        navigate(formLocation)
       })
       .then(error => {
         console.log(error);
@@ -54,7 +59,7 @@ const Login = () => {
                 Login
               </button>
             </form>
-            <SocialLogin></SocialLogin>
+            <SocialLogin formLocation={formLocation}></SocialLogin>
           </div>
         </div>
       </div>
