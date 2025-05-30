@@ -9,6 +9,7 @@ import JobApply from "../pages/Home/JobApply/JobApply";
 import MyApplications from "../pages/MyApplications/MyApplications";
 import AddJob from "../pages/AddJob/AddJob";
 import MyPostsJob from "../pages/MyPostedJob/MyPostsJob";
+import VeiwApplications from "../pages/veiwApplication/VeiwApplications";
 
 export const router =createBrowserRouter([
     {
@@ -49,6 +50,11 @@ export const router =createBrowserRouter([
             {
                 path:'/MyPostedJob',
                 element:<PrivateRoute><MyPostsJob></MyPostsJob></PrivateRoute>
+            },
+            {
+                path:'/applications/:job_id',
+                element:<PrivateRoute><VeiwApplications></VeiwApplications></PrivateRoute>,
+                loader:({params})=>fetch(`http://localhost:3000/applications/job/${params.job_id}`)
             }
         ]
     }

@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import useAuth from '../../hooks/useAuth';
+import JobLists from './JobLists';
+import { jobAddByPromise } from '../../api/jobs';
 
 const MyPostsJob = () => {
+    const {user}=useAuth()
     return (
         <div>
-            <h1>My Posts Job</h1>
+            <Suspense>
+                <JobLists jobAddByPromise={jobAddByPromise(user.email)}></JobLists>
+            </Suspense>
         </div>
     );
 };
