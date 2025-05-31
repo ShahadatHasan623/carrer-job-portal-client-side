@@ -26,7 +26,7 @@ const JobLists = ({ jobAddByPromise }) => {
                 <th>{index + 1}</th>
                 <td>{job.title}</td>
                 <td>{job.applicationDeadline}</td>
-                <td>0</td>
+                <td>{job.application_count}</td>
                 <td><Link to={`/applications/${job._id}`}>Veiw Applications</Link></td>
               </tr>
             ))}
