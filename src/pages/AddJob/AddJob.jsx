@@ -16,7 +16,7 @@ const AddJob = () => {
     newJob.requirements=newJob.requirements.split(',').map(req=>req.trim());
     newJob.responsibilities=newJob.responsibilities.split(',').map(res=>res.trim())
     newJob.status="active"
-    axios.post('http://localhost:3000/jobs',newJob)
+    axios.post('https://carrer-code-server.vercel.app/jobs',newJob)
     .then(res=>{
       console.log(res.data)
     })

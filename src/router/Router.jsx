@@ -31,12 +31,12 @@ export const router =createBrowserRouter([
             },
             {
                 path:'/jobs/:id',
-                loader:({params})=>fetch(`http://localhost:3000/jobs/${params.id}`),
+                loader:({params})=>fetch(`https://carrer-code-server.vercel.app/jobs/${params.id}`),
                 Component:JobDetails
             },
             {
                 path:'/jobApply/:id',
-                loader:({params})=>fetch(`http://localhost:3000/jobs/${params.id}`),
+                loader:({params})=>fetch(`https://carrer-code-server.vercel.app/jobs/${params.id}`),
                 element:<PrivateRoute><JobApply></JobApply></PrivateRoute>
             },
             {
@@ -54,7 +54,7 @@ export const router =createBrowserRouter([
             {
                 path:'/applications/:job_id',
                 element:<PrivateRoute><VeiwApplications></VeiwApplications></PrivateRoute>,
-                loader:({params})=>fetch(`http://localhost:3000/applications/job/${params.job_id}`)
+                loader:({params})=>fetch(`https://carrer-code-server.vercel.app/applications/job/${params.job_id}`)
             }
         ]
     }

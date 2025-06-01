@@ -25,7 +25,7 @@ const JobApply = () => {
     };
     // console.log(application)
     axios
-      .post("http://localhost:3000/applications", application)
+      .post("https://carrer-code-server.vercel.app/applications", application)
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
