@@ -3,7 +3,6 @@ import { Link } from "react-router";
 
 const JobLists = ({ jobAddByPromise }) => {
   const jobs = use(jobAddByPromise);
-  console.log(jobs);
   return (
     <div>
       <h1 className="text-3xl">job add buy list :{jobs.length}</h1>

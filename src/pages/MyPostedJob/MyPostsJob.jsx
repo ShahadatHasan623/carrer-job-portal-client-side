@@ -1,17 +1,22 @@
-import React, { Suspense } from 'react';
-import useAuth from '../../hooks/useAuth';
-import JobLists from './JobLists';
-import { jobAddByPromise } from '../../api/jobs';
+import React, { Suspense } from "react";
+import useAuth from "../../hooks/useAuth";
+import useJob from "../../api/useJob";
+import JobLists from "./JobLists";
+import MyApplicationjob from "../../api/MyApplicationjob";
 
 const MyPostsJob = () => {
-    const {user}=useAuth()
-    return (
-        <div>
-            <Suspense>
-                <JobLists jobAddByPromise={jobAddByPromise(user.email)}></JobLists>
-            </Suspense>
-        </div>
-    );
+  const { user } = useAuth();
+  const{jobAddByPromise}=useJob()
+
+  return (
+    <div>
+      <Suspense fallback={<p>loading...</p>}>
+        <JobLists
+          jobAddByPromise={jobAddByPromise(user.email, user.accessToken)}
+        ></JobLists>
+      </Suspense>
+    </div>
+  );
 };
 
 export default MyPostsJob;

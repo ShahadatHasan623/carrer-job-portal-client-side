@@ -9,7 +9,6 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
-import axios from "axios";
 
 const provider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
@@ -38,18 +37,7 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (CurrentUser) => {
       setUser(CurrentUser);
       setLoading(false);
-      if (CurrentUser?.email) {
-        const userData = { email: CurrentUser.email };
-        axios.post("http://localhost:3000/jwt", userData,{
-          withCredentials:true
-        })
-          .then((res) => {
-            console.log("token after jwt", res.data);
-          })
-          .catch(error =>{
-            console.log(error)
-          });
-      }
+      console.log(CurrentUser)
     });
     return () => {
       unSubscribe();
